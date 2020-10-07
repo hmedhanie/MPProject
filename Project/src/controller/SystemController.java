@@ -29,8 +29,8 @@ public class SystemController {
 		LibraryMember member = dataAccess.searchMember(memberId);
 		System.out.println(member +"=");
 		
-		Book book = new Book();
-	    book = dataAccess.searchBook(isbn);
+		//Book book = new Book();//redundant
+	    Book book = dataAccess.searchBook(isbn);
 		
 		
 	}

@@ -26,9 +26,6 @@ public class Book {
 		this.availablity=availablity;
 	}
 
-	public Book() {
-		
-	}
 	
 	public void addListOfBookCopy(BookCopy bookCopy) {
 		bookCopys.add(bookCopy);
