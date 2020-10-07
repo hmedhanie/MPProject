@@ -1,12 +1,9 @@
+package groupfour;
 
 public class Main {
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		System.out.println("this is git hub");
 		
-		Trial.trial();
+		UI uI = new UI();
+		uI.addMember();
 	}
-
 }
