@@ -25,10 +25,19 @@ public class LibraryMember extends Person{
 		return checkOutRecord;
 	}
 
+	public void setCheckOutRecord(CheckOutRecord checkOutRecord) {
+		this.checkOutRecord = checkOutRecord;
+	}
+
 	@Override
 	public String toString() {
-		return "LibraryMember [memberId=" + memberId + ", checkOutRecord=" + checkOutRecord + "]";
+		return "LibraryMember [memberId=" + memberId + ", checkOutRecord=" + checkOutRecord + ", getFirstName()="
+				+ getFirstName() + ", getLastName()=" + getLastName() + ", getPhoneNumber()=" + getPhoneNumber() + "]";
 	}
+
+	
+
+	
 
 	
 	

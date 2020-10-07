@@ -1,32 +1,36 @@
 package controller;
+import java.time.LocalDate;
+
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
-import otherClasses.*;
+import otherClasses.Address;
+import otherClasses.Book;
+import otherClasses.BookCopy;
+import otherClasses.LibraryMember;
+import otherClasses.UI;
 
 public class SystemController {
 
 	private UI uI;
 	private DataAccess dataAccess;
-	
+
+	public SystemController(UI uI) {
+		super();
+		dataAccess = new DataAccessFacade();
+
+	}
+
 	public void addMember(LibraryMember libraryMember, Address address) {
 		dataAccess.saveLibraryMember(libraryMember, address);
-		
-		
-		
-		/*String street = libraryMember.getAddress().getStreet();
-		String city = libraryMember.getAddress().getCity();
-		String state = libraryMember.getAddress().getState();
-		int zip = libraryMember.getAddress().getZip();
-		Address address = new Address(street, city, state, zip);
-		String fname = libraryMember.getFirstName();
-		String lname = libraryMember.getLastName();
-		String tel = libraryMember.getPhoneNumber();
-		String memberId = libraryMember.getMemberId();
-		LibraryMember LibraryMember = new LibraryMember(fname, lname, tel, address, memberId); 
-		dataAccess.saveLibraryMember(fname, memberId);*/
 	}
-	
-	public void checkOutBook(String memberId, String isbn) {
+
+	public void checkOutBook(String memberId, int isbn) {
+		LibraryMember member = dataAccess.searchMember(memberId);
+		System.out.println(member +"=");
+		
+		Book book = new Book();
+	    book = dataAccess.searchBook(isbn);
+		
 		
 	}
 }

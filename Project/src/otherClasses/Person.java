@@ -31,5 +31,11 @@ public class Person {
 		return address;
 	}
 
+	@Override
+	public String toString() {
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber
+				+ ", address=" + address + "]";
+	}
+
 	
 }
