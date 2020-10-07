@@ -1,5 +1,4 @@
-package groupfour;
-
+package otherClasses;
 public class DataBase {
 
 	private Address address;

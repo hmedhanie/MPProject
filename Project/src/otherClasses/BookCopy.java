@@ -1,4 +1,4 @@
-package groupfour;
+package otherClasses;
 
 public class BookCopy {
 
