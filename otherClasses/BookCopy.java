@@ -9,9 +9,5 @@ public class BookCopy {
 		this.book = book;
 	}
 	
-	public void isAvailablity() {
-		
-	}
-	
 	
 }

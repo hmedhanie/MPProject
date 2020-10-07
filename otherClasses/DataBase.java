@@ -47,19 +47,19 @@ public class DataBase {
 	public Book[] bookDataBase() {
 		Book bOne = new Book("Java", 15, 20, 30);
 		BookCopy copy11 = new BookCopy(bOne); BookCopy copy12 = new BookCopy(bOne); BookCopy copy13 = new BookCopy(bOne);
-		bOne.addListOfBookCopy(copy11); bOne.addListOfBookCopy(copy12);  bOne.addListOfBookCopy(copy13); 
+		bOne.addBookCopy(copy11); bOne.addBookCopy(copy12);  bOne.addBookCopy(copy13); 
 		
 		Book bTwo = new Book("avaJ", 10, 20, 30);
 		BookCopy copy21 = new BookCopy(bTwo); BookCopy copy22 = new BookCopy(bTwo); BookCopy copy23 = new BookCopy(bTwo);
-		bTwo.addListOfBookCopy(copy21); bTwo.addListOfBookCopy(copy22); bTwo.addListOfBookCopy(copy23);
+		bTwo.addBookCopy(copy21); bTwo.addBookCopy(copy22); bTwo.addBookCopy(copy23);
 		
 		Book bThree = new Book("Java", 20, 20, 30);
 		BookCopy copy31 = new BookCopy(bTwo);
-		bThree.addListOfBookCopy(copy31);
+		bThree.addBookCopy(copy31);
 		
 		Book bFour = new Book("Java", 25, 20, 30);
 		BookCopy copy41 = new BookCopy(bTwo);
-		bFour.addListOfBookCopy(copy41);
+		bFour.addBookCopy(copy41);
 		
 		Book[] b = {bOne, bTwo, bThree, bFour};	
 		return b;

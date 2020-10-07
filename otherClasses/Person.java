@@ -33,9 +33,10 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber
-				+ ", address=" + address + "]";
+		return "Person [First name = " + firstName + ", last name = " + lastName + ", phone number =" + phoneNumber + 
+				", address = " + address.toString() + " ]";
 	}
+	
 
 	
 }

@@ -1,5 +1,6 @@
 package otherClasses;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class LibraryMember extends Person{
@@ -10,9 +11,16 @@ public class LibraryMember extends Person{
 	public LibraryMember(String fname, String lname, String tel, Address address, String memberId) {
 		super(fname, lname, tel, address);
 		this.memberId = memberId;
+		this.checkOutRecord = new CheckOutRecord(0, LocalDate.now());
 	}
 	
-	public void checkOut(String copy, Date todayDate, int todayPlusCheckOutLength) {
+	public void checkOut(BookCopy copy, LocalDate todayDate, int checkoutLength) {	
+
+		LocalDate dueDate = LocalDate.now().plusDays(checkoutLength);
+		
+		CheckOutRecordEntry tempCheckOutRecordEntry = new CheckOutRecordEntry (copy, todayDate, dueDate);
+		
+		checkOutRecord.addEntry(tempCheckOutRecordEntry);
 		
 	}
 
@@ -20,13 +28,8 @@ public class LibraryMember extends Person{
 		return memberId;
 	}
 
-
 	public CheckOutRecord getCheckOutRecord() {
 		return checkOutRecord;
-	}
-
-	public void setCheckOutRecord(CheckOutRecord checkOutRecord) {
-		this.checkOutRecord = checkOutRecord;
 	}
 
 	@Override
