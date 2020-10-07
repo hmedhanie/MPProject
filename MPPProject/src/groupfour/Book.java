@@ -1,6 +1,8 @@
 package groupfour;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Book {
 
@@ -9,17 +11,28 @@ public class Book {
 	private int maxCheckOutDuration;
 	private int availablity;
 	private List<Author> author;
-	private List<BookCopy> bookCopy;
+	//private List<BookCopy> bookCopy;
+	
+	private Queue<BookCopy> bookCopy = new LinkedList<>();
+	
 
-	public void isAvailable() {
-
+	public boolean isAvailable() {
+		if (bookCopy.size() > 0) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	public BookCopy nextAvailableCopy() {
-		return new BookCopy();
+		
+		return  bookCopy.remove();
+		
 	}
 	
-	public void getMaxCheckOutLength() {
-
+	public int getMaxCheckOutLength() {
+		System.out.println("The maximum checkout length is "
+				+ maxCheckOutDuration);
+		return maxCheckOutDuration;
 	}
 }

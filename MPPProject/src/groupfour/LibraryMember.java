@@ -12,7 +12,20 @@ public class LibraryMember extends Person{
 		this.memberId = memberId;
 	}
 	
-	public void checkOut(String copy, Date todayDate, int todayPlusCheckOutLength) {
+	public void checkOut(BookCopy copy, Date todayDate, int checkoutLength) {	//int todayPlusCheckOutLength) {
+		
+		copy.changeAvailability();
+		
+		//TODO change the format of the todayDate to int and add the checkoutLength
+		
+		//todayDate.toString()
+		
+		int dueDate = todayDate + checkoutLength;
+		//convert dueDate back to Date format
+		
+		CheckOutRecordEntry tempCheckOutRecordEntry = CheckOutRecordEntry (BookCopy copy, Date todayDate, Date dueDate);
+		
+		checkOutRecord.addEntry(tempCheckOutRecordEntry);
 		
 	}
 
@@ -27,7 +40,7 @@ public class LibraryMember extends Person{
 
 	@Override
 	public String toString() {
-		return "LibraryMember [memberId=" + memberId + ", checkOutRecord=" + checkOutRecord + "]";
+		return "LibraryMember [memberId=" + memberId + " : " + super.getFirstName() + " " + super.getLastName() + ", " +  "checkOutRecord = " + checkOutRecord + "]";
 	}
 
 	

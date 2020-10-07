@@ -30,6 +30,13 @@ public class Person {
 	public Address getAddress() {
 		return address;
 	}
+	
+	@Override
+	public String toString() {
+		return "Person [First name = " + firstName + ", last name = " + lastName + ", phone number =" + phoneNumber + 
+				", address = " + address.toString() + " ]";
+	}
+	
 
 	
 }

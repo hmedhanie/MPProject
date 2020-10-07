@@ -1,5 +1,8 @@
 package groupfour;
 
+import java.awt.print.Book;
+import java.util.Date;
+
 public class SystemController {
 
 	private UI uI;
@@ -25,5 +28,24 @@ public class SystemController {
 	
 	public void checkOutBook(String memberId, String isbn) {
 		
-	}
+		//Assumption: member ID and the book Id are found and we would like to check if there is available copy
+		//say the book as 'book'
+		
+		if(book.isAvailable()) {
+			BookCopy bookCopyTemp = book.nextAvailableCopy();
+			int maxCheckoutLength = book.getMaxCheckOutLength();
+		}else {
+			System.out.println("book is not available");
+		}
+		
+		//Say libraryMember obj is 
+	
+		libraryMember.checkOut(copy, todayDate, todayPlusCheckOutLength);
+		
+		//TODO finalize this
+		
+		//15.saveMember(member)
+		//16. saveBook(book)
+		//17.displaySuccess
+	}	
 }
