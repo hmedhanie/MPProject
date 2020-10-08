@@ -9,63 +9,75 @@ import otherClasses.Address;
 import otherClasses.Book;
 import otherClasses.BookCopy;
 import otherClasses.LibraryMember;
-import otherClasses.UI;
+import otherClasses.Main;
+//import otherClasses.UI;
 
 public class SystemController {
 
-	private UI uI;
+	private Main main;
 	private DataAccess dataAccess;
 
-	public SystemController(UI uI) {
+	public SystemController(Main main) {
 		super();
 		dataAccess = new DataAccessFacade();
-
+		this.main = main;
 	}
 
-	public void addMember(LibraryMember libraryMember, Address address) {
-		dataAccess.saveLibraryMember(libraryMember, address);
+	public void addMember(LibraryMember libraryMember) {
+		dataAccess.saveLibraryMember(libraryMember);
 	}
 
-//	public void checkOutBook(String memberId, int isbn) {
-//		LibraryMember member = dataAccess.searchMember(memberId);
-//		System.out.println(member +"=");
-//		
-//		//Book book = new Book();//redundant
-//	    Book book = dataAccess.searchBook(isbn);
-//	
-//	}
-	
-    public void checkOutBook(String memberId, int isbn) {
-    	LibraryMember member = dataAccess.searchMember(memberId);
-		System.out.println(member +"=");
+	public void checkOutBook(String memberId, int isbn) {
+		LibraryMember member = dataAccess.searchMember(memberId);	
 		
-		//Book book = new Book();//redundant
-	    Book book = dataAccess.searchBook(isbn);
-
+		Book book = dataAccess.searchBook(isbn);
 		
-		//Assumption: member ID and the book Id are found and we would like to check if there is available copy
-		//say the book as 'book'
 		
 		BookCopy bookCopyTemp = null;
 		int maxCheckoutLength = 0;
-		
-		if(book.isAvailable()) {
-			bookCopyTemp = book.getAvailableCopy();
-			maxCheckoutLength = book.getMaxCheckOutLength();
-		}else {
-			System.out.println("book is not available");
+
+		if (book != null) {
+			if (book.isAvailable()) {
+				bookCopyTemp = book.getAvailableCopy();
+				maxCheckoutLength = book.getMaxCheckOutLength();
+			} else {
+				System.out.println("book is not available");
+			}
+		}
+		if (book != null) {
+		LocalDate todayDate = LocalDate.now();
+		member.checkOut(bookCopyTemp, todayDate, maxCheckoutLength);
 		}
 		
-	
-		LocalDate todayDate = LocalDate.now();
-		//
-		
-		member.checkOut(bookCopyTemp, todayDate, maxCheckoutLength);
-		
-		//TODO finalize this
-		
-		//15.saveMember(member)
-		//16. saveBook(book)
-		//17.displaySuccess
+		dataAccess.saveBook(book);
+		main.displaySuccess();
 	}
+
+	public void addBookCopy(int isbn) {
+		Book book = dataAccess.searchBook(isbn);
+		if (book != null) {
+			dataAccess.saveBook(book);
+		}
+		
+	}
+	public boolean searchUsername(String input) {
+	return dataAccess.searchUsername(input);
+	}
+	
+	public boolean matchPswd(String userID, String pswd) {
+		return dataAccess.matchPswd(userID, pswd );
+	}
+	
+	public int authorization(String userID) {
+		return dataAccess.authorization(userID);
+	}
+	
+	public LibraryMember searchMember(String memberID) {
+		return dataAccess.searchMember(memberID);
+	}
+
+	public Book searchBook(int inputIsbn) {
+		return dataAccess.searchBook(inputIsbn);
+	}
+
 }

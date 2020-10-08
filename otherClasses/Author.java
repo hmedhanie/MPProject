@@ -10,7 +10,7 @@ public class Author extends Person{
 	private List<Book> books = new LinkedList<>();
 	
 
-	public Author(String firstName, String lastName, String phoneNumber, Address address, String shortBio, String credentials, Book book) {
+	public Author(String firstName, String lastName, String phoneNumber, Address address, String shortBio, String credentials) {
 		super(firstName, lastName, phoneNumber, address);
 		this.shortBio = shortBio;
 		this.credentials = credentials;

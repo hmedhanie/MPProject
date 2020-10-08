@@ -7,6 +7,9 @@ public class BookCopy {
 	
 	public BookCopy(Book book) {
 		this.book = book;
+		book.addBookCopy(this);
+		Book.setCounter(Book.getCounter() + 1); 
+		this.copyNumber = Book.getCounter();
 	}
 	
 	

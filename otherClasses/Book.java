@@ -13,6 +13,7 @@ public class Book {
 	//private static int availability = 1; // 
 	private List<Author> authorsList = new LinkedList<>();
 	private Queue<BookCopy> bookCopyList = new LinkedList<>();
+	private static int counter = 0;		//this serves as a counter for the total number of copies a library owns
 
 	public Book(String title, int isbn, int maxCheckOutDuration, int availablity) {
 
@@ -53,6 +54,14 @@ public class Book {
 
 	public int getMaxCheckOutLength() {
 		return  maxCheckOutDuration;
+	}
+	
+	public static int getCounter() {
+		return counter;
+	}
+
+	public static void setCounter(int value) {
+		counter = value;
 	}
 
 	

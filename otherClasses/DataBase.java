@@ -1,80 +1,88 @@
 package otherClasses;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import dataaccess.User;
+
 public class DataBase {
 
-	private Address address;
-	private LibraryMember libraryMember;
+	private List<LibraryMember> libraryMemberList = new ArrayList<LibraryMember>();
+	private List<Book> bookList = new ArrayList<Book>();
+	private List<User> users = new ArrayList<>();
 
-	public Address getAddress() {
-		return address;
+
+	public DataBase() {
+		createUser();
+		addLibraryMemberToDB();
+		 addBookToDB();
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public LibraryMember getLibraryMember() {
-		return libraryMember;
-	}
-
-	public void setLibraryMember(LibraryMember member) {
-		this.libraryMember = member;
-	}
-
-	public void print() {
-		System.out.println(address);
-		System.out.println(libraryMember);
+	private void createUser() {
+		User admin = new User("Abrham", "1020", 1);
+		User librarian = new User("Tsega", "1020", 0);
+		User both = new User("Daniel", "1020", 2);
+		Collections.addAll(users, admin, librarian, both);
 	}
 	
-	Address addr1 = new Address("street", "city", "state", 10);
-	LibraryMember one = new LibraryMember("fff", "lll", "123456", addr1, "one");
-	LibraryMember two = new LibraryMember("ggg", "hhh", "654321", addr1, "two");
-	LibraryMember three = new LibraryMember("fff", "lll", "123456", addr1, "three");
-	LibraryMember four = new LibraryMember("fff", "lll", "123456", addr1, "four");
+	public List<User> getUsers() {
+		return users;
+	}
+
+	private void addLibraryMemberToDB() {
+		Address addressMemberOne = new Address("1000 N main st", "FairField", "Iowa", 52557);
+		LibraryMember memberOne = new LibraryMember("Tsega", "Abraham", "215-658-963", addressMemberOne, "1406");
+		Address addressMemberTwo = new Address("2000 E main st", "Dallas", "Texas", 52557);
+		LibraryMember memberTwo = new LibraryMember("Tsega", "Abraham", "215-658-963", addressMemberTwo, "1500");
+		Address addressMemberThree = new Address("25ME Avenu", "Denver", "Colardo", 65253);
+		LibraryMember memberThree = new LibraryMember("Medhanine", "Habtu", "215-658-963", addressMemberThree, "1625");
+		Address addressMemberFour = new Address("4634 N Jupiter rd", "Garland", "Texas", 75042);
+		LibraryMember memberFour = new LibraryMember("Gutu", "Dessisa", "215-658-963", addressMemberFour, "1808");
+		Collections.addAll(libraryMemberList, memberOne, memberTwo, memberThree, memberFour);
+	}
 	
-	LibraryMember[] lib = {one, two, three, four};
-	
-	public LibraryMember searchMemberDataBase(String memberId) {
-		LibraryMember library = null;
-		for (LibraryMember libraryMember : lib) {
-			if (libraryMember.getMemberId().equals(memberId)) {
-				library = libraryMember;
-			}
-		}
-		return library;
-}
-	
-	public Book[] bookDataBase() {
-		Book bOne = new Book("Java", 15, 20, 30);
-		BookCopy copy11 = new BookCopy(bOne); BookCopy copy12 = new BookCopy(bOne); BookCopy copy13 = new BookCopy(bOne);
-		bOne.addBookCopy(copy11); bOne.addBookCopy(copy12);  bOne.addBookCopy(copy13); 
+	public void addLibraryMemberToDB(LibraryMember member) {
+	libraryMemberList.add(member);
+	}
 		
-		Book bTwo = new Book("avaJ", 10, 20, 30);
-		BookCopy copy21 = new BookCopy(bTwo); BookCopy copy22 = new BookCopy(bTwo); BookCopy copy23 = new BookCopy(bTwo);
-		bTwo.addBookCopy(copy21); bTwo.addBookCopy(copy22); bTwo.addBookCopy(copy23);
+	public List<LibraryMember> getLibraryMemberFromDB() {
+		return libraryMemberList;
+	}
+
+	private void addBookToDB() {
+		Address addressOfAuthorOne = new Address("69N st", "Irving", "Texas", 2596);
+		Address addressOfAuthorTwo = new Address("70N st", "Iowa city", "Iowa", 1425);
+		Address addressOfAuthorThree = new Address("71N st", "RichLand", "Iowa", 3658);
+		Address addressOfAuthorFour = new Address("81N st", "Houston", "Texas", 8563);
 		
-		Book bThree = new Book("Java", 20, 20, 30);
-		BookCopy copy31 = new BookCopy(bTwo);
-		bThree.addBookCopy(copy31);
+		Book firstBook = new Book("CoreJava", 2025425689, 7, 1);
+		Author authorOne = new Author("Peter", "John", "214-663-4238", addressOfAuthorOne, "bio ", "BestSeller");
+		firstBook.addAuthor(authorOne);
 		
-		Book bFour = new Book("Java", 25, 20, 30);
-		BookCopy copy41 = new BookCopy(bTwo);
-		bFour.addBookCopy(copy41);
+		Book secondBook = new Book("C++", 256345865, 21, 3);
+		Author authorTwo = new Author("Reqiq", "Higemengist", "251-663-4238", addressOfAuthorTwo, "bio ", "BestSeller");
+		secondBook.addAuthor(authorTwo);
 		
-		Book[] b = {bOne, bTwo, bThree, bFour};	
-		return b;
+		Book thirdBook = new Book("Java How To Program", 658933665, 21, 3);
+		Author authorThree = new Author("Qecco", "Beza", "365-663-4238", addressOfAuthorThree, "bio ", "BestSeller");
+		thirdBook.addAuthor(authorThree);
+		
+		Book fourthBook = new Book("Fikir Iski Meqabir", 698755664, 7, 1);
+		Author authorFour = new Author("Ameha", "Abrham", "586-663-4238", addressOfAuthorFour, "bio ", "BestSeller");
+		fourthBook.addAuthor(authorFour);
+		
+		Collections.addAll(bookList, firstBook, secondBook, thirdBook, fourthBook);	
+	}
+	public void addBookToDB(Book book) {
+		bookList.add(book);
 	}
 	
-	public Book searchBookFromDataBase(int memberId) {
-		Book[] b = bookDataBase();
-		Book book = null;
-		for (Book bok : b) {
-		if (bok.getIsbn() == memberId) {
-			book = bok;
-		}	
-		}
-		return book;
+	public List<Book> getBooksFromDB() {
+		return bookList;
 	}
+	
+	
 }
 
 
